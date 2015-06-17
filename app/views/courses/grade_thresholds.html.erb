@@ -23,7 +23,7 @@
     <%= f.fields_for :grade_thresholds do |ff| %>
       <div class="association container">
         <div class="row">
-          <div class="span3">
+          <div class="span3" >
             <%= ff.label :letter do %>
               <strong class="large-field-label">Letter</strong> <%= ff.text_field :letter, class: "input-small" %>
             <% end %>
@@ -35,7 +35,7 @@
           </div>
           <div class="span1">
             <% if ff.object.persisted? %>
-              <%= link_to 'Delete', nil, class: "btn btn-danger delete-association" %>
+              <%= link_to 'Delete', "#", onclick: "hideSection(this);", class: "btn btn-danger delete-association" %>
               <%= ff.check_box :_destroy, class: "destroy", hidden: true %>
             <% else %>
               <%= link_to 'Delete', nil, class: "btn btn-danger flush-association" %>
@@ -46,10 +46,10 @@
       <% i += 1 %>
     <% end %>
   </div>
-  <%= link_to '<i class="fa fa-plus"></i> Add Grade Threshold'.html_safe, nil, class: "btn btn-success new-association", "data-index" => i %>
+  <%= link_to '<i class="fa fa-plus"></i> Add Grade Threshold'.html_safe, "hi", class: "btn btn-success new-association", onclick: "showLastRow();", "data-index" => i %>
 
 
   <div class="actions">
-    <%= f.submit class: "btn" %>
+    <%= f.submit class: "btn", id: "submit_form", onclick: "disableOnClick()" %>
   </div>
 <% end %>
